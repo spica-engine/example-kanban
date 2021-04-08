@@ -1,0 +1,44 @@
+.columns {
+  width: auto;
+  padding: 24px;
+  display: flex;
+  flex-direction: row;
+  overflow-x: scroll;
+  &::-webkit-scrollbar {
+    height: 4px;
+    width: 4px;
+  }
+  &::-webkit-scrollbar {
+    width: 3px;
+  }
+
+  .handle {
+    margin-right: 16px;
+    cursor: move;
+  }
+}
+.column-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 5px gray dashed;
+  width: 300px;
+  padding: 32px;
+  height: 350px;
+}
+
+.cdk-drag-placeholder {
+  opacity: 0.2;
+  //width: 350px;
+  //border: 5px dashed gray;
+  //margin: 0px 10px;
+}
+
+.cdk-drag-animating {
+  transition: transform 300ms ease;
+}
+
+.columns.cdk-drop-list-dragging .cdk-drag {
+  transition: transform 300ms ease;
+}

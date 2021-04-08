@@ -1,0 +1,50 @@
+:host{
+  background: rgba(255,255,255,1);
+  display: inline-block;
+  padding: 30px;
+  border-radius: 5px;
+  width: 100%;
+  box-sizing: border-box;
+  * {
+    box-sizing: border-box;
+  }
+  .content {
+    overflow: hidden;
+    height: auto;
+    width: 100%;
+  }
+  
+  mat-form-field {
+    width: 100%;
+  }
+  
+  textarea {
+    display: block;
+    width: 100%;
+  }
+  
+  .mat-dialog-actions{
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .blue {
+    color: #71deff;
+  }
+  .green {
+    color: #36e9b6;
+  }
+  .yellow {
+    color: #ffcf44;
+  }
+  .purple {
+    color: #b15cff;
+  }
+  .gray {
+    color: gray;
+  }
+  .red {
+    color: #e74a4a;
+  }
+  
+}
