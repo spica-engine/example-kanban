@@ -5,7 +5,7 @@
     <app-email-login></app-email-login>
   </div>
 
-  <div *ngIf="auth.authState | async as user">
+  <div *ngIf="auth.authState | async">
       Logged in as <strong>{{ user.email }}</strong>
 
     <button
@@ -14,7 +14,7 @@
       mat-raised-button
       color="accent"
     >
-      <mat-icon>dashboard</mat-icon> Go to Column
+      <mat-icon>dashboard</mat-icon> Go to Board
     </button>
 
     <br />

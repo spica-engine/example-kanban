@@ -67,6 +67,7 @@ export class EmailLoginComponent implements OnInit {
       }
       if (this.isSignup) {
         await this.auth.register(email, password);
+        this.serverMessage = "Registration completed";
       }
     } catch (error) {
       this.serverMessage = error.message;

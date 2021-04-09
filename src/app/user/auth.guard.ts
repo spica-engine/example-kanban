@@ -5,7 +5,7 @@ import {
   RouterStateSnapshot,
   UrlTree
 } from "@angular/router";
-import { first } from "rxjs/operators";
+import { last } from "rxjs/operators";
 import { SnackService } from "../services/snack.service";
 import { AuthService } from "../services/auth.service";
 
@@ -19,15 +19,13 @@ export class AuthGuard implements CanActivate {
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): Promise<boolean> {
+
     await this.auth.isLoggedIn();
-    const user = await this.auth.authState.pipe(first()).toPromise();
-
+    const user = this.auth.getUser();
     const isLoggedIn = !!user;
-
     if (!isLoggedIn) {
       this.snack.authError();
     }
-
     return isLoggedIn;
   }
 }

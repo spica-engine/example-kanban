@@ -18,15 +18,6 @@
         </a>
     </div>
 
-    <!-- Password reset -->
-    <div *ngIf="isPasswordReset">
-        <h3>Reset Password</h3>
-
-        <button size="small" mat-button (click)="changeType('login')">
-            Back
-        </button>
-    </div>
-
     <form (ngSubmit)="onSubmit()" [formGroup]="form">
 
         <!-- Email form field -->
@@ -37,7 +28,7 @@
         </mat-form-field>
 
         <!-- Password form field -->
-        <mat-form-field [color]="email.valid && 'accent'" *ngIf="!isPasswordReset">
+        <mat-form-field [color]="email.valid && 'accent'">
             <input matInput formControlName="password" type="password" placeholder="Password" autocomplete="off" />
 
             <mat-error *ngIf="password.invalid && password.dirty">
@@ -59,14 +50,9 @@
         <mat-error class="server-error">{{ serverMessage }}</mat-error>
 
         <!-- Submit button -->
-        <button *ngIf="!isPasswordReset" mat-raised-button color="accent" type="submit"
+        <button mat-raised-button color="accent" type="submit"
             [disabled]="form.invalid || !passwordDoesMatch || loading">
             Submit
-        </button>
-
-        <!-- Reset password button -->
-        <button *ngIf="isPasswordReset" mat-stroked-button type="submit" [disabled]="loading">
-            Send Reset Email
         </button>
     </form>
 </mat-card>

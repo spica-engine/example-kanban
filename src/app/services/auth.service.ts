@@ -18,16 +18,18 @@ export class AuthService {
   }
 
   async isLoggedIn() {
-    if(localStorage.getItem("user_token")){
+    if(!this.currentUser && localStorage.getItem("user_token")){
       this.currentUserJWT = localStorage.getItem("user_token");
       let user = this.parseJwt(this.currentUserJWT);
-      console.log(user);
       user = await Bucket.data.getAll(environment.usersBucketId, { queryParams: { filter: `email=='${user.identifier}'` } });
       if(user[0]){
         this.currentUser = user[0];
         this.authState.next(true);
       }
+    }else if(this.currentUser){
+      this.authState.next(true);
     }
+    
   }
 
   async login(identifier, password) {
@@ -45,13 +47,13 @@ export class AuthService {
     });
   }
 
-  async sendPasswordResetEmail(email) {
-    return
-  }
-
   logout() {
     localStorage.clear();
     this.authState.next(false);
+  }
+
+  getUser(){
+    return this.currentUser;
   }
 
   setUser(user) {

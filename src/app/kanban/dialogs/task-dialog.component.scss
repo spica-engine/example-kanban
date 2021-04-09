@@ -1,15 +1,9 @@
 :host{
-  background: rgba(255,255,255,1);
   display: inline-block;
-  padding: 30px;
   border-radius: 5px;
   width: 100%;
   box-sizing: border-box;
-  * {
-    box-sizing: border-box;
-  }
   .content {
-    overflow: hidden;
     height: auto;
     width: 100%;
   }
@@ -45,6 +39,5 @@
   }
   .red {
     color: #e74a4a;
-  }
-  
+  } 
 }

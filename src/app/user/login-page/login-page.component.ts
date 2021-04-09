@@ -7,7 +7,11 @@ import { AuthService } from "src/app/services/auth.service";
   styleUrls: ["./login-page.component.scss"]
 })
 export class LoginPageComponent implements OnInit {
+  public user = {};
   constructor(public auth: AuthService) {}
 
-  ngOnInit() {}
+  async ngOnInit() {
+    await this.auth.isLoggedIn();
+    this.user = this.auth.getUser();
+  }
 }

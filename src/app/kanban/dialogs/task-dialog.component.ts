@@ -15,7 +15,6 @@ import { ColumnService } from "../column.service";
           [(ngModel)]="data.task.description"
         ></textarea>
       </mat-form-field>
-      <br />
       <mat-button-toggle-group
         #group="matButtonToggleGroup"
         [(ngModel)]="data.task.label"
@@ -46,11 +45,12 @@ export class TaskDialogComponent {
     public dialog: MatDialogRef<TaskDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private columnService: ColumnService
-  ) {}
+  ) { }
 
   handleDelete() {
-    console.log(this.data);
-    //this.columnService.removeTask(this.data.columnId, this.data.task);
+    let column = this.columnService.columns.filter(column => this.data.columnId == column._id)[0];
+    column.tasks = column.tasks.filter(task => task.description !== this.data.task.description);
+    this.columnService.updateTasks(this.data.columnId, column.tasks);
     this.dialog.close();
   }
 }
